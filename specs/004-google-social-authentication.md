@@ -1,4 +1,4 @@
-# Spec: Google Social Authentication
+# SPEC-004: Google Social Authentication
 
 ## 1. Objective
 
