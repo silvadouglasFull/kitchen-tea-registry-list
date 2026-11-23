@@ -114,3 +114,40 @@ export type UpdateUserInput = z.infer<typeof updateUserSchema>;
 - [ ] Are inferred types exported in `PascalCase` using `z.infer<typeof ...>`?
 - [ ] Are internal fields (`id`, `createdAt`, `updatedAt`) excluded from `create*Schema` and `update*Schema`?
 - [ ] Is the schema 100% pure Zod without `drizzle-zod` imports?
+
+---
+
+## 5. Restricted Projection & Enum Example (e.g., User Profile Photo)
+
+When a module must expose only a narrow projection of a database entity (such as returning only the `publicUrl` of a user's profile photo without exposing internal IDs, storage providers, or timestamps), define explicit enums and narrow output schemas:
+
+```typescript
+import { z } from "zod";
+
+export const storageProviderEnum = z.enum([
+  "r2",
+  "s3",
+  "google-drive",
+  "google-login",
+]);
+
+export const createUserProfileSchema = z.object({
+  userId: z.string().uuid(),
+  storageProvider: storageProviderEnum,
+  publicUrl: z.string().url(),
+});
+
+export const updateUserProfileSchema = z.object({
+  storageProvider: storageProviderEnum,
+  publicUrl: z.string().url(),
+});
+
+export const userProfilePhotoSchema = z.object({
+  publicUrl: z.string().url().nullable(),
+});
+
+export type StorageProvider = z.infer<typeof storageProviderEnum>;
+export type CreateUserProfileInput = z.infer<typeof createUserProfileSchema>;
+export type UpdateUserProfileInput = z.infer<typeof updateUserProfileSchema>;
+export type UserProfilePhoto = z.infer<typeof userProfilePhotoSchema>;
+```
