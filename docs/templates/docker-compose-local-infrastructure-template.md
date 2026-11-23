@@ -1,0 +1,48 @@
+# ==============================================================================
+# Local Development Infrastructure Template (ADR-013 / SPEC-013)
+# - Runs ONLY PostgreSQL and Garage in Docker.
+# - Do NOT add Node.js or Nginx containers here (Node runs natively on host).
+# ==============================================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: kitchen-tea-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-kitchen_tea}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kitchen_tea_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-kitchen_tea_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-kitchen_tea} -d ${POSTGRES_DB:-kitchen_tea_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  garage:
+    image: dxflrs/garage:v2.5.0
+    container_name: kitchen-tea-garage
+    restart: unless-stopped
+    ports:
+      - "3900:3900" # S3 API
+      - "3901:3901" # RPC
+      - "3902:3902" # S3 Web
+      - "3903:3903" # Admin API
+    environment:
+      GARAGE_DEFAULT_ACCESS_KEY: ${R2_ACCESS_KEY_ID}
+      GARAGE_DEFAULT_SECRET_KEY: ${R2_SECRET_ACCESS_KEY}
+      GARAGE_DEFAULT_BUCKET: ${R2_BUCKET_NAME:-kitchen-tea-local}
+    volumes:
+      - ./docker/garage/garage.toml:/etc/garage.toml:ro
+      - garage_meta:/var/lib/garage/meta
+      - garage_data:/var/lib/garage/data
+    command: ["/garage", "server", "--single-node", "--default-bucket"]
+
+volumes:
+  postgres_data:
+  garage_meta:
+  garage_data:
