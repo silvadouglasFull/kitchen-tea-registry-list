@@ -1,9 +1,9 @@
-Leia o AGENTS.md e execute exclusivamente a Task 002 (padrões de código, contratos Zod puros e automação com Plop.js e shadcn-zod-form).
+Read the AGENTS.md file and execute exclusively Task 002 (coding standards, pure Zod contracts, and automation using Plop.js and shadcn-zod-form).
 
-Regras e escopo:
-- Instale e configure zod, plop (-D) e o uso do shadcn-zod-form (formulários físicos .tsx com React Hook Form, zodResolver, shadcn/ui e Tailwind CSS).
-- Garanta que o ESLint esteja configurado e passando sem erros ou avisos (`npm run lint`).
-- Aplique rigorosamente as convenções de nomenclatura: kebab-case para arquivos, camelCase para variáveis/funções/objetos/classes/schemas Zod, e PascalCase para tipos inferidos (`z.infer`) e componentes React.
-- Use schemas Zod puros (separando criação, atualização e saída/domínio quando aplicável) e Server Actions validando entradas com `.safeParse()`.
-- Nunca use `drizzle-zod` para contratos de aplicação, decoradores customizados de validação ou `AutoForm`/geração em tempo de execução.
-- Faça em passos pequenos, rode o lint ao final e não avance para a Task 003.
+Rules and scope:
+- Install and configure Zod, Plop (as a dev dependency), and shadcn-zod-form (implementing .tsx forms using React Hook Form, zodResolver, shadcn/ui, and Tailwind CSS).
+- Ensure ESLint is configured and passes without any errors or warnings (`npm run lint`).
+- Strictly follow naming conventions: kebab-case for files; camelCase for variables, functions, objects, classes, and Zod schemas; and PascalCase for inferred types (`z.infer`) and React components.
+- Use pure Zod schemas (separating creation, update, and output/domain schemas where applicable) and Server Actions that validate inputs using `.safeParse()`.
+- Do not use `drizzle-zod` for application contracts, custom validation decorators, or `AutoForm`/runtime generation.
+- Proceed in small steps, run the linter upon completion, and do not move on to Task 003.

@@ -1,7 +1,7 @@
-Leia o AGENTS.md e execute exclusivamente a Task 003 (camada de banco de dados com Drizzle ORM + PostgreSQL e camada de storage compatível com Garage localmente e Cloudflare R2 em produção).
+Read the AGENTS.md file and execute exclusively Task 003 (database layer using Drizzle ORM + PostgreSQL, and a storage layer compatible with Garage for local development and Cloudflare R2 for production).
 
-Regras e escopo:
-- Crie um arquivo de schema dedicado por tabela no Drizzle ORM para as 5 tabelas definidas na modelagem, com suporte a múltiplas conexões quando necessário e fluxo de migrações via Drizzle Kit CLI.
-- Estruture a camada de storage via SDK S3 isolada no servidor, usando Garage no ambiente local e preparada para Cloudflare R2 sem vazar credenciais para o cliente.
-- Mantenha a separação de camadas (`domain`, `application`, `infrastructure`) e siga kebab-case / camelCase / PascalCase.
-- Trabalhe em passos pequenos, valide migrações/conexão e lint, e não avance para a Task 004.
+Rules and scope:
+- Create a dedicated schema file for each table in Drizzle ORM, covering the 5 tables defined in the data model; include support for multiple connections where necessary and manage migrations via the Drizzle Kit CLI.
+- Implement the storage layer using an S3-compatible SDK, isolated on the server side—configured for Garage in the local environment and prepared for Cloudflare R2—ensuring that credentials are never exposed to the client.
+- Maintain a clear separation of layers (`domain`, `application`, `infrastructure`) and adhere to consistent naming conventions (kebab-case, camelCase, and PascalCase).
+- Work in small, incremental steps; validate migrations, database connections, and linting. Do not proceed to Task 004.

@@ -1,7 +1,7 @@
-Leia o AGENTS.md e execute exclusivamente a Task 004 (autenticação social via Google OAuth 2.0 e módulo restrito de foto de perfil do usuário).
+Read the AGENTS.md file and execute exclusively Task 004 (social authentication via Google OAuth 2.0 and a restricted user profile photo module).
 
-Regras e escopo:
-- Implemente o fluxo de login, callback e logout com Google OAuth 2.0 vinculando `users` e `authAccounts`, mantendo segredos e tokens exclusivamente no servidor.
-- Implemente o módulo de perfil (`userProfiles`) restrito à foto de perfil, expondo apenas os 4 métodos previstos, retornando exclusivamente a `publicUrl` e removendo arquivos antigos do storage ao substituir/excluir.
-- Respeite a arquitetura modular (`domain`, `application`, `infrastructure`), schemas Zod puros, checagem de sessão e posse (`userId`), e o retorno padronizado `{ success, error?, data? }` nas Server Actions.
-- Trabalhe em passos pequenos, rode o lint e não avance para a Task 005.
+Rules and scope:
+- Implement the login, callback, and logout flow using Google OAuth 2.0, linking `users` and `authAccounts` while keeping secrets and tokens strictly on the server side.
+- Implement the profile module (`userProfiles`) restricted to the user's profile photo; expose only the 4 specified methods, return exclusively the `publicUrl`, and ensure old files are removed from storage when replaced or deleted.
+- Adhere to the modular architecture (`domain`, `application`, `infrastructure`), use pure Zod schemas, perform session and ownership (`userId`) checks, and ensure a standardized return format—`{ success, error?, data? }`—for all Server Actions.
+- Work in small increments, run the linter, and do not proceed to Task 005.

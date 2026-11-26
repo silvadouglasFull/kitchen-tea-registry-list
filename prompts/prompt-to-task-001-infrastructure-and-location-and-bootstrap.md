@@ -1,8 +1,8 @@
-Leia o AGENTS.md e execute exclusivamente a Task 001 (infraestrutura local e bootstrap do projeto), seguindo as definições de ADR-013, SPEC-013 e os templates em docs/templates/.
+Read AGENTS.md and execute exclusively Task 001 (local infrastructure and project bootstrap), following the definitions in ADR-013, SPEC-013, and the templates located in docs/templates/.
 
-Regras e escopo:
-- Suba e valide o ambiente Docker local com PostgreSQL e Garage (substituindo MinIO). Não crie ou use imagens Docker para Node.js ou Nginx; o Node.js rodará nativamente no host.
-- Configure as variáveis de ambiente no lado do servidor a partir dos templates em docs/templates/, sem expor segredos ou credenciais no cliente ou commitar valores sensíveis.
-- Inicialize/verifique o projeto Next.js e instale apenas as dependências base necessárias para esta etapa.
-- Trabalhe em passos pequenos, mostre o que foi alterado e valide se o banco e o Garage respondem antes de concluir.
-- Não avance para a Task 002 nem adicione funcionalidades fora do escopo da Task 001.
+Rules and scope:
+- Set up and validate the local Docker environment with PostgreSQL and Garage (replacing MinIO). Do not create or use Docker images for Node.js or Nginx; Node.js should run natively on the host.
+- Configure server-side environment variables using the templates provided in docs/templates/; ensure no secrets or credentials are exposed on the client side, and do not commit any sensitive values.
+- Initialize/verify the Next.js project and install only the base dependencies required for this stage.
+- Work in small increments, document your changes, and verify that the database and Garage are responsive before finalizing.
+- Do not proceed to Task 002, and do not add any functionality outside the scope of Task 001.

@@ -1,7 +1,7 @@
-Leia o AGENTS.md e execute exclusivamente a Task 005 (módulos de domínio Gift Registry e Registry Items e integração com storage para fotos de itens).
+Read the AGENTS.md file and execute Task 005 exclusively (covering the `Gift Registry` and `Registry Items` domain modules, along with integration with a storage solution for item photos).
 
-Regras e escopo:
-- Estruture os módulos de `Gift Registry` e `Registry Items` em `domain`, `application` e `infrastructure` (repositórios com Drizzle ORM sem regra de negócio, services com regras de negócio, Server Actions com `.safeParse()` e retorno `{ success, error?, data? }`).
-- Inclua geração de `slug` único, validação com Zod puro, verificação de sessão e posse (`resource.userId === session.userId`), *soft delete* e projeções adequadas para organizador e convidado.
-- Integre o upload/substituição/remoção de fotos opcionais dos itens ao módulo de storage (Garage localmente / Cloudflare R2), limpando objetos órfãos/antigos.
-- Trabalhe em passos pequenos, rode o lint e não avance para a Task 006.
+Rules and scope:
+- Structure the `Gift Registry` and `Registry Items` modules using a `domain`, `application`, and `infrastructure` architecture (repositories using Drizzle ORM without business logic; services containing business logic; and Server Actions utilizing `.safeParse()` and returning a `{ success, error?, data? }` object).
+- Implement the generation of unique `slugs`, validation using standard Zod, session and ownership verification (`resource.userId === session.userId`), *soft deletes*, and appropriate data projections for both organizers and guests.
+- Integrate the uploading, replacing, and removing of optional item photos with the storage module (using local Garage or Cloudflare R2), ensuring that orphaned or outdated objects are cleaned up.
+- Work in small, incremental steps, run the linter, and do not proceed to Task 006.
