@@ -1,0 +1,40 @@
+"use server";
+
+import { create{{pascalCase moduleName}}Schema, type Create{{pascalCase moduleName}}Input } from "../schemas/create-{{kebabCase moduleName}}.schema";
+import { {{camelCase moduleName}}Service } from "../services/{{kebabCase moduleName}}-service";
+
+export type ActionResult<T = void> = {
+  success: boolean;
+  error?: string;
+  data?: T;
+};
+
+export async function create{{pascalCase moduleName}}Action(
+  rawInput: Create{{pascalCase moduleName}}Input,
+): Promise<ActionResult<{ id: string }>> {
+  const parsed = create{{pascalCase moduleName}}Schema.safeParse(rawInput);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: "Please check the form fields and try again.",
+    };
+  }
+
+  try {
+    // TODO: get authenticated user session
+    // const session = await auth();
+    // if (!session?.user?.id) {
+    //   return { success: false, error: "You must be signed in." };
+    // }
+    // const sessionUserId = session.user.id;
+
+    const created = await {{camelCase moduleName}}Service.create("TODO_USER_ID", parsed.data);
+    return { success: true, data: { id: created.id } };
+  } catch {
+    return {
+      success: false,
+      error: "Unable to complete this action right now. Please try again.",
+    };
+  }
+}
