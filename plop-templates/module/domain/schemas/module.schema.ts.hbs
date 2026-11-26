@@ -1,0 +1,14 @@
+import { z } from "zod";
+import { create{{pascalCase moduleName}}Schema } from "../../application/schemas/create-{{kebabCase moduleName}}.schema";
+
+/**
+ * Domain / output schema for {{pascalCase moduleName}}.
+ * Extends the creation schema with persistence-managed fields.
+ * Never expose internal DB fields (deletedAt, etc.) through this schema.
+ */
+export const {{camelCase moduleName}}Schema = create{{pascalCase moduleName}}Schema.extend({
+  id: z.string().uuid(),
+  createdAt: z.string().datetime(),
+});
+
+export type {{pascalCase moduleName}} = z.infer<typeof {{camelCase moduleName}}Schema>;

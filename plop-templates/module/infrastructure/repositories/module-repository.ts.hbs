@@ -1,0 +1,30 @@
+import { db } from "@/shared/database/client";
+import type { Create{{pascalCase moduleName}}Input } from "../../application/schemas/create-{{kebabCase moduleName}}.schema";
+import type { Update{{pascalCase moduleName}}Input } from "../../application/schemas/update-{{kebabCase moduleName}}.schema";
+import type { {{pascalCase moduleName}} } from "../../domain/schemas/{{kebabCase moduleName}}.schema";
+
+/**
+ * {{pascalCase moduleName}} repository — contains only Drizzle ORM persistence queries.
+ * No business rules here. No Drizzle-specific types exposed outside this layer.
+ */
+export const {{camelCase moduleName}}Repository = {
+  async create(userId: string, input: Create{{pascalCase moduleName}}Input): Promise<{{pascalCase moduleName}}> {
+    // TODO: implement Drizzle insert
+    // const [row] = await db.insert({{camelCase moduleName}}Table).values({ ...input, userId }).returning();
+    // return row;
+    void db; void userId; void input;
+    throw new Error("Not implemented");
+  },
+
+  async update(id: string, userId: string, input: Update{{pascalCase moduleName}}Input): Promise<{{pascalCase moduleName}}> {
+    // TODO: implement Drizzle update with ownership check
+    void id; void userId; void input;
+    throw new Error("Not implemented");
+  },
+
+  async delete(id: string, userId: string): Promise<void> {
+    // TODO: implement Drizzle soft-delete or hard-delete
+    void id; void userId;
+    throw new Error("Not implemented");
+  },
+};

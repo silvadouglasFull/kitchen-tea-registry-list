@@ -1,0 +1,26 @@
+import type { Create{{pascalCase moduleName}}Input } from "../schemas/create-{{kebabCase moduleName}}.schema";
+import type { Update{{pascalCase moduleName}}Input } from "../schemas/update-{{kebabCase moduleName}}.schema";
+import type { {{pascalCase moduleName}} } from "../../domain/schemas/{{kebabCase moduleName}}.schema";
+import { {{camelCase moduleName}}Repository } from "../../infrastructure/repositories/{{kebabCase moduleName}}-repository";
+
+/**
+ * {{pascalCase moduleName}} service — contains business rules.
+ * Receives data already validated by Server Actions.
+ * Coordinates repository operations and enforces domain invariants.
+ */
+export const {{camelCase moduleName}}Service = {
+  async create(userId: string, input: Create{{pascalCase moduleName}}Input): Promise<{{pascalCase moduleName}}> {
+    // TODO: implement creation business rules
+    return {{camelCase moduleName}}Repository.create(userId, input);
+  },
+
+  async update(id: string, userId: string, input: Update{{pascalCase moduleName}}Input): Promise<{{pascalCase moduleName}}> {
+    // TODO: implement update business rules and ownership check
+    return {{camelCase moduleName}}Repository.update(id, userId, input);
+  },
+
+  async delete(id: string, userId: string): Promise<void> {
+    // TODO: implement soft-delete or hard-delete logic
+    return {{camelCase moduleName}}Repository.delete(id, userId);
+  },
+};
