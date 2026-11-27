@@ -6,6 +6,15 @@
         "-y",
         "next-devtools-mcp@latest"
       ]
+    },
+    "drizzle": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "--no-install",
+        "drizzle-kit",
+        "mcp"
+      ]
     }
   }
 }
